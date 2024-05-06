@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        class DeleteMiddleElement{
+
+            constructor(){
+
+                this.stack = [];
+                this.size = this.stack.length;
+                
+            }
+            
+            push(element){
+                
+                this.stack.push(element);
+                this.size = this.stack.length;
+
+            }
+
+            delete(){
+
+                this.stack2 = [];
+
+                let middle = Math.round(this.size/2);
+                console.log("Middle Element : " + middle);
+
+                for(let i=0; i<middle-1; i++){
+
+                    let temp = this.stack.pop();
+                    this.stack2.push(temp);
+
+                }
+
+                this.stack.pop();
+
+                while(this.stack2.length != 0){
+
+                    let temp = this.stack2.pop();
+                    this.stack.push(temp);
+
+                }
+
+            }
+
+            viewList(){
+
+                let str = "";
+                let i=0;
+
+                while(i<this.stack.length){
+                    
+                    str += this.stack[i] + " ";
+                    i++;
+
+                }
+
+                return str;
+
+            }
+
+        }
+
+        let stack = new DeleteMiddleElement();
+        console.log(stack);
+
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.push(40);
+        stack.push(50);
+        stack.push(60);
+        stack.push(70);
+
+        stack.delete();
+
+        console.log("View Data : " + stack.viewList());
+
+    </script>
+</body>
+</html>

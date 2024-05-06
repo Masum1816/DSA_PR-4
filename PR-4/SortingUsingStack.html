@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        class SortingUsingStack{
+
+            constructor(){
+
+                this.stack = [];
+
+            }
+
+            enqueue(element){
+
+                this.stack.push(element);
+
+            }
+
+            viewData(){
+
+                let str = "";
+                let i=0;
+
+                while(i<this.stack.length){
+                    
+                    str += this.stack[i] + " ";
+                    i++;
+
+                }
+
+                return str;
+
+            }
+
+            sorting(){
+
+                this.stack2 = [];
+
+                while(this.stack.length != 0){
+
+                    let temp = this.stack.pop();
+
+                    while(this.stack2.length != 0 && this.stack2[this.stack2.length-1] < temp){
+
+                        this.stack.push(this.stack2[this.stack2.length-1]);
+                        this.stack2.pop();
+
+                    }
+                    this.stack2.push(temp);
+                    
+                }
+
+                
+                while(this.stack2.length != 0){
+                    
+                    let temp = this.stack2.pop();
+                    this.stack.push(temp);
+                    
+                }
+                return this.stack;
+                
+            }
+
+        }
+
+        let stack = new SortingUsingStack();
+        console.log(stack);
+
+        stack.enqueue(100);
+        stack.enqueue(300);
+        stack.enqueue(500);
+        stack.enqueue(200);
+        stack.enqueue(400);
+
+        console.log("Stack : " + stack.viewData());
+
+        console.log("Sorted Stack : " + stack.sorting());
+
+    </script>
+</body>
+</html>

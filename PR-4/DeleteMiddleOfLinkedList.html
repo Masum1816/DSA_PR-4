@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        class DeleteMiddleElementOfSLL{
+
+            constructor(d){
+
+                this.head = {
+                    data: d,
+                    next: null          
+                }
+
+                this.tail = this.head;
+                this.size = 1;
+
+            }
+
+            addList(value){
+
+                const newNode = {
+                    data: value,
+                    next: null
+                }
+
+                this.tail.next = newNode;
+                this.tail = newNode;
+                this.size++;
+
+            }
+
+            viewList(){
+
+                let current = this.head;
+
+                while(current != null){
+
+                    console.log("Data : " + current.data);
+                    current = current.next;
+
+                }
+
+            }
+
+            delete(){
+
+                let current = this.head;
+
+                let middle = Math.round(this.size/2);
+                console.log("Middle Element : " + middle);
+
+                for(let i=1; i<middle-1; i++){
+
+                    current = current.next;
+
+                }
+                current.next = current.next.next;
+                this.size--;
+
+            }
+
+        }
+
+        let element = new DeleteMiddleElementOfSLL(100);
+        console.log(element);
+
+        element.addList(200);
+        element.addList(300);
+        element.addList(400);
+        element.addList(500);
+        element.addList(600);
+        element.addList(700);
+
+        element.viewList();
+        element.delete();
+        element.viewList();
+
+    </script>
+</body>
+</html>
